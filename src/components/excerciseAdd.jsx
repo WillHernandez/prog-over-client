@@ -13,7 +13,6 @@ export default function ExcerciseAdd() {
   const [addSuccess, setAddSuccess] = useState('')
 
   const submitExcercise = e => {
-    // e.preventDefault()
     const excerciseVals = {
       name,
       muscle,
@@ -38,7 +37,6 @@ export default function ExcerciseAdd() {
       <Box
         component="form"
         sx={{
-          // '& .MuiTextField-root': { m: 1, width: '80%'},
           '& .MuiTextField-root': { my: 1, mx: 5, width: '80%'},
         }}
         noValidate
