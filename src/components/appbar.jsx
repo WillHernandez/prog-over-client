@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -23,6 +23,18 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleMenuClick = e => {
+    e.preventDefault()
+    switch(e.target.innerHTML) {
+      case 'Logout':
+        localStorage.clear()
+        window.location.reload()
+        break;
+      default:
+        return
+    }
+  }
 
   return (
     <AppBar position='sticky'>
@@ -88,8 +100,8 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {settings.map(setting => (
+                <MenuItem key={setting} onClick={e => {handleMenuClick(e); handleCloseUserMenu(e)}}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

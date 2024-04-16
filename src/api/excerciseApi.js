@@ -18,12 +18,12 @@ export const addExcercise = async (excerciseVals) => {
 
 export const postExcerciseNote = async (excercise, notes) => {
 	const url = `http://localhost:4000/api/excercises/notes/${excercise}`
-	await axios.post(url, {notes})
-	return
+	const res = await axios.post(url, {notes})
+	return res
 }
 
 export const deleteExcerciseNote = async (excercise, noteIndex) => {
 	const url = `http://localhost:4000/api/excercises/notes/${excercise}/${noteIndex}`
-	await axios.delete(url)
-	return
+	const res = await axios.delete(url)
+	return res
 }

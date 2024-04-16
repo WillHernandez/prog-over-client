@@ -21,7 +21,7 @@ export default function BottomNav() {
             onChange={(event, newValue) => {
               setValue(newValue);
               if(newValue === 0) {
-                setUrl('/')
+                setUrl('/stack')
               }
               if(newValue === 2) {
                 setUrl('/excercises')

@@ -21,7 +21,7 @@ export default function ExcerciseDetails() {
 		exApi.fetchExcerciseDetails(excercise)
 		.then(res => setExcerciseDets(res.data))
 		.catch(e => console.log(e))
-	},[excercise, excerciseDets])
+	},[excercise])
 
   return (
 		<>
@@ -55,7 +55,7 @@ export default function ExcerciseDetails() {
 const NotesForm = ({excerciseDets, setExcerciseDets}) => {
 	const submitNote = target => {
 		exApi.postExcerciseNote(excerciseDets.name, target.value)	
-		.then(() => setExcerciseDets(''))
+		.then(res => setExcerciseDets(res.data))
 		.catch(e => console.log(e))
 
 		target.value = ''
@@ -96,7 +96,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 const NotesGrid = ({note, excercise, setExcerciseDets, index}) => {
 	const deleteNote = () => {
 		exApi.deleteExcerciseNote(excercise, index)	
-		.then(() => setExcerciseDets(''))
+		.then(res => setExcerciseDets(res.data))
 		.catch(e => console.log(e))
 	}
 
