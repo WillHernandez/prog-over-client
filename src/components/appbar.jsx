@@ -10,8 +10,9 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import axios from 'axios';
 
-const settings = ['Profile', 'Account', 'Logout'];
+const settings = ['Profile', 'Account', 'Signout'];
 
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -24,10 +25,11 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const handleMenuClick = e => {
+  const handleMenuClick = async e => {
     e.preventDefault()
     switch(e.target.innerHTML) {
-      case 'Logout':
+      case 'Signout':
+        await axios('http://localhost:4000/api/user/signout')
         localStorage.clear()
         window.location.reload()
         break;
@@ -45,7 +47,7 @@ function ResponsiveAppBar() {
             variant="6"
             noWrap
             component="a"
-            href="/"
+            href="/stack"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -64,7 +66,7 @@ function ResponsiveAppBar() {
             variant="p"
             noWrap
             component="a"
-            href="/"
+            href="/stack"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },

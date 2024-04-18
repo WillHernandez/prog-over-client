@@ -6,6 +6,8 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
 import * as exApi from '../api/excerciseApi'
+import ResponsiveAppBar from './appbar';
+import BottomNav from './bottomNav';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,11 +19,15 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Excercises() {
   return (
-    <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 0 }}>
-			<div>
-				<StackData />
-			</div>
-    </Box>
+		<div>
+			<ResponsiveAppBar />
+    	<Box sx={{ flexGrow: 1, overflow: 'hidden', px: 0 }}>
+				<div>
+					<StackData />
+				</div>
+    	</Box>
+			<BottomNav />
+		</div>
   );
 }
 

@@ -5,6 +5,8 @@ import { useState } from 'react';
 import * as exApi from '../api/excerciseApi'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ResponsiveAppBar from './appbar';
+import BottomNav from './bottomNav';
 
 export default function ExcerciseAdd() {
   const [name, setName] = useState('')
@@ -34,6 +36,7 @@ export default function ExcerciseAdd() {
 
   return (
     <>
+      <ResponsiveAppBar />
       <Box
         component="form"
         sx={{
@@ -65,6 +68,7 @@ export default function ExcerciseAdd() {
         <Button onClick={submitExcercise} variant="outlined">Submit</Button>
       {Boolean(addSuccess) && addSuccess.length > 0  ? <Typography style={{color: "gray"}}>{addSuccess}</Typography> : null}
       </Box>
+      <BottomNav />
     </>
   );
 }

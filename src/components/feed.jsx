@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import ResponsiveAppBar from './appbar';
+import BottomNav from './bottomNav';
 // import { useState } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,7 +22,9 @@ export default function ZeroWidthStack() {
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 0 }}>
 			<div>
+				<ResponsiveAppBar />
 				<StackData />
+				<BottomNav />
 			</div>
     </Box>
   );

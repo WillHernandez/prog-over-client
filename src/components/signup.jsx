@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import * as uApi from '../api/userApi'
 import { useNavigate } from 'react-router-dom';
-
+// import { useCookies } from 'react-cookie';
 
 function Copyright(props) {
   return (
@@ -32,6 +32,7 @@ const defaultTheme = createTheme();
 
 export default function UserFormComponent() {
 	const [ signUp, setSignup ] = useState(false)
+  // const [cookies, setCookie] = useCookies(['name']);
   const navigate = useNavigate();
 
   const handleSubmit = async e => {
@@ -46,18 +47,20 @@ export default function UserFormComponent() {
 
 		if(signUp) {
       try {
-        const res = await uApi.signup(user)
-        if(res === "OK") {
-          localStorage.setItem('user', JSON.stringify(user))
+        const res = await uApi.signUp(user)
+        if(res.status === 200) {
+          localStorage.setItem('user', JSON.stringify(res.data.session.user))
+          // setCookie('session', res.data.session)
         }
       } catch(e) {
         console.log(e);
       }
 		} else {
       try {
-        const res = await uApi.signin(user)
-        if(res === "OK") {
-          localStorage.setItem('user', JSON.stringify(user))
+        const res = await uApi.signIn(user)
+        if(res.status === 200) {
+          localStorage.setItem('user', JSON.stringify(res.data.session.user))
+          // setCookie('session', res.data.session)
         }
       } catch(e) {
         console.log(e);

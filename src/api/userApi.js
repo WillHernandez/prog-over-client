@@ -1,12 +1,21 @@
 import axios from "axios"
-const url = "http://localhost:4000/api/user"
+const baseURL = "http://localhost:4000"
+const instance = axios.create({ // sends cookies on each req
+	withCredentials: true,
+	baseURL
+})
 
-export const signup = async user => {
-	const res = await axios.post(`${url}/signup`, user)
-	return res.data
+export const signUp = async user => {
+	const res = await instance.post(`${baseURL}/api/user/signup`, user)
+	return res
 }
 
-export const signin = async user => {
-	const res = await axios.post(`${url}/signin`, user)
+export const signIn = async user => {
+	const res = await instance.post(`${baseURL}/api/user/signin`, user)
+	return res
+}
+
+export const signOut = async user => {
+	const res = await instance.get(`${baseURL}/api/user/signout`, user)
 	return res.data
 }

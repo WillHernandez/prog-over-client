@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import { TextareaAutosize } from '@mui/base';
 import * as exApi from '../api/excerciseApi'
 import Button from '@mui/material/Button';
+import ResponsiveAppBar from './appbar';
+import BottomNav from './bottomNav';
 
 // notesgrid
 import { styled } from '@mui/material/styles';
@@ -24,7 +26,8 @@ export default function ExcerciseDetails() {
 	},[excercise])
 
   return (
-		<>
+		<div>
+		<ResponsiveAppBar />
 		{Boolean(excerciseDets) && 
     	<Box
       	height={"80%"}
@@ -48,7 +51,8 @@ export default function ExcerciseDetails() {
 				</Stack>
     	</Box>
 		}
-		</>
+		<BottomNav />
+		</div>
   );
 }
 
