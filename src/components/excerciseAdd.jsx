@@ -12,12 +12,14 @@ export default function ExcerciseAdd() {
   const [name, setName] = useState('')
   const [muscle, setMuscle] = useState('')
   const [link, setLink] = useState('')
+  const [category, setCategory] = useState('')
   const [addSuccess, setAddSuccess] = useState('')
 
   const submitExcercise = e => {
     const excerciseVals = {
       name,
       muscle,
+      category,
       link
     }
     exApi.addExcercise(excerciseVals)	
@@ -57,6 +59,12 @@ export default function ExcerciseAdd() {
             id="outlined-required"
             label="Primary Muscle"
             onChange={e => setMuscle(e.target.value)}
+          />
+          <TextField 
+            id="outlined-basic"
+            label="Category"
+            variant="outlined"
+            onChange={e => setCategory(e.target.value)}
           />
           <TextField 
             id="outlined-basic"

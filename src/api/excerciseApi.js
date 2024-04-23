@@ -9,9 +9,18 @@ export const fetchAllExcercises = async () => {
 	const res = await instance.get(`${baseURL}/api/excercises`)
 	return res
 }
+export const fetchExcercisesFiltered = async e => {
+	const res = await instance.post(`${baseURL}/api/excercises/filter`, {excercises: e})
+	return res
+}
 
 export const fetchExcerciseDetails = async excercise => {
 	const res = await instance.get(`${baseURL}/api/excercises/${excercise}`)
+	return res
+}
+
+export const fetchExcerciseCategory = async category => {
+	const res = await instance.get(`${baseURL}/api/excercises/excercise/${category}`)
 	return res
 }
 

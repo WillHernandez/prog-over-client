@@ -40,12 +40,12 @@ export default function ExcerciseDetails() {
       	sx={{ }}
     	>
 				<Stack>
-					<Typography>{excerciseDets.name}</Typography>
-					<Typography>{excerciseDets.primary_muscle}</Typography>
-					{Boolean(excerciseDets.video_link) && 
+					<Typography>{'Excercise: ' + excerciseDets.name}</Typography>
+					<Typography>{'Focus: ' + excerciseDets.primary_muscle}</Typography>
+					{excerciseDets.video_link ?
 						<Typography>
 							<a style={{textDecoration: "none"}} href={excerciseDets.video_link} target="_blank" rel="noopener noreferrer">Instructional Video</a>
-						</Typography>
+						</Typography> : null
 					}
 					<NotesForm excerciseDets={excerciseDets} setExcerciseDets={setExcerciseDets}/>
 				</Stack>
