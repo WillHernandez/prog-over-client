@@ -1,39 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Select from 'react-select'
 import ResponsiveAppBar from './appbar';
 import BottomNav from './bottomNav';
 import LinkedFieldsRowEditing from "./editableRows";
-import { fetchExcercisesByGroup, fetchExcercisesFiltered } from "../api/excerciseApi";
+import { BroSplit } from './workouts/brosplit'
+import { FullBody } from './workouts/fullbody'
+import { PushLegsPull } from './workouts/pushlegspull'
+import { UpperLower } from './workouts/upperlower'
+
+let workoutsTypes = {
+	BroSplit,
+	FullBody,
+	PushLegsPull,
+	UpperLower
+}
 
 export default function MesoForm() {
 	const [mesoDays, setMesoDays] = useState('')
-	const [muscleGroups, setMuscleGroups] = useState([])
 	const [trainingStyle, setTrainingStyle] = useState('')
 
-	useEffect(() => {
-		const getMuscleGroups = async () => {
-			const res = await fetch('http://localhost:4000/api/excercises/muscles')
-			const data = await res.json()
-			const options = []
-			data.forEach((mg, i) => {
-				options[i] = {value: mg.primary_muscle.toLowerCase(), label: mg.primary_muscle}
-			})
-			setMuscleGroups(options)
+	const rows = []
+	if(trainingStyle && Number(mesoDays)) {
+		for(let i = 0; i < mesoDays; ++i) {
+			rows.push(<LinkedFieldsRowEditing row={workoutsTypes[trainingStyle][i]} day={i+1} key={i} />)	
 		}
-		getMuscleGroups()
-	},[])
+	}
 
 	return(
 		<>
-		<ResponsiveAppBar />
-		<form>
-			<RadioMesoComponent setMesoDays={setMesoDays}/>
-			<TrainingStyleComponent setTrainingStyle={setTrainingStyle}/>	
-			{/* <RenderMesoTemplate muscleGroups={muscleGroups}/> */}
-		</form>
-		{/* <MesoStack mesoDays={mesoDays}/> */}
-		<LinkedFieldsRowEditing days={mesoDays}/>
-		<BottomNav />
+			<ResponsiveAppBar />
+			<form>
+				<RadioMesoComponent setMesoDays={setMesoDays}/>
+				<TrainingStyleComponent setTrainingStyle={setTrainingStyle}/>	
+			</form>
+
+ 		{/* must be fixed to use .keys rather than manually inserting as done below */}
+			{Boolean(rows.length) &&
+				rows.map(row => row)
+			}
+			<BottomNav />
 		</>
 	)
 }
@@ -55,46 +60,35 @@ const RadioMesoComponent = ({setMesoDays}) => {
 	)
 }
 
-const RenderMesoTemplate = ({muscleGroups}) => {
-	const [excercises, setExcercises] = useState([])
+// const RenderMesoTemplate = ({muscleGroups}) => {
+// 	const [excercises, setExcercises] = useState([])
 
-	const fetchExcercises = async e => {
-		await fetchExcercisesFiltered(e)
-		.then(res => setExcercises(res.data))
-		.catch(e => console.log(e.message))
-	}
+// 	const fetchExcercises = async e => {
+// 		await fetchExcercisesFiltered(e)
+// 		.then(res => setExcercises(res.data))
+// 		.catch(e => console.log(e.message))
+// 	}
 
-	return(
-		<>
-			<Select 
-			onChange={fetchExcercises}
-			placeholder="Select muscle groups"
-			isMulti
-    	name="muscle groups"
-    	options={muscleGroups}
-    	className="basic-multi-select"
-    	classNamePrefix="select"
-			/>
-			{/* {excercises.length ? <MesoStack excercises={excercises}/> : null} */}
-		</>
-	)
-}
-
-// excercises is a filtered object of excercises returned by our backend
-const MesoStack = ({mesoDays}) => ( 
-	// excercises.map(ex => 
-		// make a feed with excercise choices
-		// <div key={ex.name}>
-			// <h3>{ex.name}</h3>
-		// </div>
-	// )
-	<h1>{mesoDays}</h1>
-)
+// 	return(
+// 		<>
+// 			<Select 
+// 			onChange={fetchExcercises}
+// 			placeholder="Select muscle groups"
+// 			isMulti
+//     	name="muscle groups"
+//     	options={muscleGroups}
+//     	className="basic-multi-select"
+//     	classNamePrefix="select"
+// 			/>
+// 			{/* {excercises.length ? <MesoStack excercises={excercises}/> : null} */}
+// 		</>
+// 	)
+// }
 
 const TrainingStyleComponent = ({setTrainingStyle}) => {
-	const styles = ['Push-Legs-Pull', 'Bro-Split', 'Full-Body', 'Upper-Lower']
+	const styles = ['Full Body', 'Push Legs Pull', 'Upper Lower', 'Bro Split']
 	return(
-		<fieldset onChange={e => setTrainingStyle(e.target.value)} className='flex-container' style={{margin: '10px', padding: '10px', textAlign: 'center', fontSize: '18px'}}>
+		<fieldset onChange={e => setTrainingStyle(e.target.value.replace(/ /g,''))} className='flex-container' style={{margin: '10px', padding: '10px', textAlign: 'center', fontSize: '18px'}}>
   	<legend>Training Style:</legend>
 			<div style={{display: 'flex', justifyContent: "space-around"}}>
 				{styles.map((style, i) => 

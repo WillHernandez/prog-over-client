@@ -1,9 +1,8 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import { DataGrid } from '@mui/x-data-grid';
-import { ppl } from './workouts/pushlegspull';
+import { DataGrid } from '@mui/x-data-grid'
 
-export default function LinkedFieldsRowEditing({type, days, row}) {
+export default function LinkedFieldsRowEditing({row, day}) {
   const columns = [
     {
 			field: 'excercise',
@@ -13,8 +12,8 @@ export default function LinkedFieldsRowEditing({type, days, row}) {
       editable: true,
 		},
 		{
-      field: 'Day 1',
-      headerName: 'Day 1',
+      field: `Day ${day}`,
+      headerName: `Day ${day}`,
       type: 'singleSelect',
       valueOptions: ({row}) => row.category,
       width: 140,
@@ -30,10 +29,8 @@ export default function LinkedFieldsRowEditing({type, days, row}) {
   ]
 
   return (
-    <Box sx={{ width: '100%', height: '100%'}}>
-      <DataGrid rows={ppl.push} columns={columns} editMode="row" />
-      <DataGrid rows={ppl.legs} columns={columns} editMode="row" />
-      <DataGrid rows={ppl.pull} columns={columns} editMode="row" />
+    <Box sx={{ width: '100%', height: '90%'}}>
+      <DataGrid rows={row} columns={columns} editMode="row" />
     </Box>
-  );
+  )
 }
