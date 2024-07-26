@@ -92,7 +92,7 @@ export const UpperLower = [
 			excercise: 'Chest Iso',
 			category: await getCategory('Chest Iso')
   	},
-	],	
+	],
 	[
   	{
     	id: 1,
@@ -120,15 +120,15 @@ export const UpperLower = [
   	},
 		{
     	id: 5,
-    	description: 'Glutes',
-			excercise: 'Glutes',
-			category: await getCategory('Glutes')
+    	description: 'Quads',
+			excercise: 'Quads',
+			category: await getCategory('Quads')
   	},
 		{
     	id: 6,
-    	description: 'Abs',
-			excercise: 'Abs',
-			category: await getCategory('Abs')
+    	description: 'Glutes',
+			excercise: 'Glutes',
+			category: await getCategory('Glutes')
   	},
 	],
 	[
@@ -146,9 +146,97 @@ export const UpperLower = [
   	},
   	{
     	id: 3,
+    	description: 'Horizontal Push',
+			excercise: 'Horizontal Push',
+			category: await getCategory('Horizontal Push')
+  	},
+		{
+    	id: 4,
+    	description: 'Horizontal Pull',
+			excercise: 'Horizontal Pull',
+			category: await getCategory('Horizontal Pull')
+  	},
+		{
+    	id: 5,
+    	description: 'Delts',
+			excercise: 'Delts',
+			category: await getCategory('Delts')
+  	},
+		{
+    	id: 6,
+    	description: 'Horizontal Pull',
+			excercise: 'Horizontal Pull',
+			category: await getCategory('Horizontal Pull')
+  	},
+		{
+    	id: 7,
+    	description: 'Biceps',
+			excercise: 'Biceps',
+			category: await getCategory('Biceps')
+  	},
+		{
+    	id: 8,
+    	description: 'Chest Iso',
+			excercise: 'Chest Iso',
+			category: await getCategory('Chest Iso')
+  	},
+	],
+	[
+		{
+    	id: 1,
+    	description: 'Quads',
+			excercise: 'Quads',
+			category: await getCategory('Quads')
+  	},
+  	{
+    	id: 2,
+			description: 'Glutes',
+			excercise: 'Glutes',
+			category: await getCategory('Glutes')
+  	},
+		{
+    	id: 3,
+    	description: 'Hamstrings',
+			excercise: 'Hamstrings',
+			category: await getCategory('Hamstrings')
+  	},
+  	{
+    	id: 4,
+			description: 'Glutes',
+			excercise: 'Glutes',
+			category: await getCategory('Glutes')
+  	},
+		{
+    	id: 5,
+    	description: 'Abs',
+			excercise: 'Abs',
+			category: await getCategory('Abs')
+  	},
+		{
+    	id: 6,
+    	description: 'Glutes',
+			excercise: 'Glutes',
+			category: await getCategory('Glutes')
+  	},
+	],
+	[
+  	{
+    	id: 1,
     	description: 'Incline Push',
 			excercise: 'Incline Push',
 			category: await getCategory('Incline Push')
+  	},
+  	{
+    	id: 2,
+    	description: 'Vertical Pull',
+			excercise: 'Vertical Pull',
+			category: await getCategory('Vertical Pull')
+  	},
+  	{
+    	id: 3,
+    	description: 'Triceps',
+			excercise: 'Triceps',
+			category: await getCategory('Triceps')
   	},
 		{
     	id: 4,
@@ -164,9 +252,9 @@ export const UpperLower = [
   	},
 		{
     	id: 6,
-    	description: 'Delts',
-			excercise: 'Delts',
-			category: await getCategory('Delts')
+    	description: 'Triceps',
+			excercise: 'Triceps',
+			category: await getCategory('Triceps')
   	},
 		{
     	id: 7,
@@ -174,75 +262,5 @@ export const UpperLower = [
 			excercise: 'Chest Iso',
 			category: await getCategory('Chest Iso')
   	},
-	],	
-	// [
-  // 	{
-  //   	id: 1,
-  //   	description: 'Quads',
-	// 		excercise: 'Quads',
-	// 		category: await getCategory('Quads')
-  // 	},
-  // 	{
-  //   	id: 2,
-  //   	description: 'Glutes',
-	// 		excercise: 'Glutes',
-	// 		category: await getCategory('Glutes')
-  // 	},
-  // 	{
-  //   	id: 3,
-  //   	description: 'Quads',
-	// 		excercise: 'Quads',
-	// 		category: await getCategory('Quads')
-  // 	},
-	// 	{
-  //   	id: 4,
-  //   	description: 'Glutes',
-	// 		excercise: 'Glutes',
-	// 		category: await getCategory('Glutes')
-  // 	},
-	// 	{
-  //   	id: 5,
-  //   	description: 'Calves',
-	// 		excercise: 'Calves',
-	// 		category: await getCategory('Calves')
-  // 	},
-	// 	{
-  //   	id: 6,
-  //   	description: 'Abs',
-	// 		excercise: 'Abs',
-	// 		category: await getCategory('Abs')
-  // 	},
-	// ],
-	// [
-  // 	{
-  //   	id: 1,
-  //   	description: 'Incline Push',
-	// 		excercise: 'Incline Push',
-	// 		category: await getCategory('Incline Push')
-  // 	},
-  // 	{
-  //   	id: 2,
-  //   	description: 'Chest Isolation',
-	// 		excercise: 'Chest Isolation',
-	// 		category: await getCategory('Chest Isolation')
-  // 	},
-  // 	{
-  //   	id: 3,
-  //   	description: 'Horizontal Push',
-	// 		excercise: 'Horizontal Push',
-	// 		category: await getCategory('Horizontal Push')
-  // 	},
-	// 	{
-  //   	id: 4,
-  //   	description: 'Delts',
-	// 		excercise: 'Delts',
-	// 		category: await getCategory('Delts')
-  // 	},
-	// 	{
-  //   	id: 5,
-  //   	description: 'Biceps',
-	// 		excercise: 'Biceps',
-	// 		category: await getCategory('Biceps')
-  // 	},
-	// ],
+	],
 ]

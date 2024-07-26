@@ -9,13 +9,13 @@ import ResponsiveAppBar from './appbar';
 import BottomNav from './bottomNav';
 
 export default function ExcerciseAdd() {
-  const [name, setName] = useState('')
-  const [muscle, setMuscle] = useState('')
-  const [link, setLink] = useState('')
-  const [category, setCategory] = useState('')
+  const [name, setName] = useState(undefined)
+  const [muscle, setMuscle] = useState(undefined)
+  const [category, setCategory] = useState(undefined)
+  const [link, setLink] = useState(undefined)
   const [addSuccess, setAddSuccess] = useState('')
 
-  const submitExcercise = e => {
+  const submitExcercise = () => {
     const excerciseVals = {
       name,
       muscle,
@@ -26,13 +26,13 @@ export default function ExcerciseAdd() {
 		.then(req => {
       if(req.status === 200) {
           setAddSuccess('Excercise Added Successfully')
+          setName('')
+          setMuscle('')
+          setCategory('')
+          setLink('')
       }
     })
 		.catch(e => setAddSuccess(e.response.data))
-
-    setName('')
-    setMuscle('')
-    setLink('')
   }
 
 
@@ -61,7 +61,8 @@ export default function ExcerciseAdd() {
             onChange={e => setMuscle(e.target.value)}
           />
           <TextField 
-            id="outlined-basic"
+            required
+            id="outlined-required"
             label="Category"
             variant="outlined"
             onChange={e => setCategory(e.target.value)}

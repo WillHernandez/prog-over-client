@@ -2,7 +2,8 @@ import axios from "axios"
 const baseURL = "http://localhost:4000"
 const instance = axios.create({ // sends cookies on each req
 	withCredentials: true,
-	baseURL
+	baseURL,
+	host : null
 })
 
 export const signUp = async user => {

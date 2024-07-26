@@ -14,39 +14,103 @@ export const BroSplit = [
 	[
   	{
     	id: 1,
-    	description: 'Quads',
-			excercise: 'Quads',
-			category: await getCategory('Quads')
-  	},
-  	{
-    	id: 2,
     	description: 'Incline Push',
 			excercise: 'Incline Push',
 			category: await getCategory('Incline Push')
   	},
   	{
+    	id: 2,
+    	description: 'Horizontal Push',
+			excercise: 'Horizontal Push',
+			category: await getCategory('Horizontal Push')
+  	},
+  	{
     	id: 3,
-    	description: 'Hamstrings',
-			excercise: 'Hamstrings',
-			category: await getCategory('Hamstrings')
+    	description: 'Chest Isolation',
+			excercise: 'Chest Isolation',
+			category: await getCategory('Chest Isolation')
+  	},
+  	{
+    	id: 4,
+    	description: 'Incline Push',
+			excercise: 'Incline Push',
+			category: await getCategory('Incline Push')
+  	},
+  	{
+    	id: 5,
+    	description: 'Horizontal Push',
+			excercise: 'Horizontal Push',
+			category: await getCategory('Horizontal Push')
+  	},
+  	{
+    	id: 6,
+    	description: 'Chest Isolation',
+			excercise: 'Chest Isolation',
+			category: await getCategory('Chest Isolation')
+  	},
+	],
+	[
+		{
+			id: 1,
+			description: 'Horizontal Pull',
+			excercise: 'Horizontal Pull',
+			category: await getCategory('Horizontal Pull')
+		},
+		{
+			id: 2,
+			description: 'Horizontal Pull',
+			excercise: 'Horizontal Pull',
+			category: await getCategory('Horizontal Pull')
+		},
+		{
+			id: 3,
+			description: 'Vertical Pull',
+			excercise: 'Vertical Pull',
+			category: await getCategory('Vertical Pull')
+		},
+		{
+			id: 4,
+			description: 'Vertical Pull',
+			excercise: 'Vertical Pull',
+			category: await getCategory('Vertical Pull')
+		},
+		{
+			id: 5,
+			description: 'Horizontal Pull',
+			excercise: 'Horizontal Pull',
+			category: await getCategory('Horizontal Pull')
+		},
+	],
+	[
+		{
+    	id: 1,
+    	description: 'Front Delts',
+			excercise: 'Front Delts',
+			category: await getCategory('Front Delts')
+  	},
+		{
+    	id: 2,
+    	description: 'Delts',
+			excercise: 'Delts',
+			category: await getCategory('Delts')
+  	},
+		{
+    	id: 3,
+    	description: 'Delts',
+			excercise: 'Delts',
+			category: await getCategory('Delts')
   	},
 		{
     	id: 4,
-    	description: 'Vertical Pull',
-			excercise: 'Vertical Pull',
-			category: await getCategory('Vertical Pull')
+    	description: 'Delts',
+			excercise: 'Delts',
+			category: await getCategory('Delts')
   	},
 		{
     	id: 5,
-    	description: 'Biceps',
-			excercise: 'Biceps',
-			category: await getCategory('Biceps')
-  	},
-		{
-    	id: 6,
-    	description: 'Abs',
-			excercise: 'Abs',
-			category: await getCategory('Abs')
+    	description: 'Traps',
+			excercise: 'Traps',
+			category: await getCategory('Traps')
   	},
 	]
 ]

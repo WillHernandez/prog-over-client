@@ -116,9 +116,9 @@ export const PushLegsPull = [
 	[
   	{
     	id: 1,
-    	description: 'Incline Push',
-			excercise: 'Incline Push',
-			category: await getCategory('Incline Push')
+    	description: 'Front Delts',
+			excercise: 'Front Delts',
+			category: await getCategory('Front Delts')
   	},
   	{
     	id: 2,

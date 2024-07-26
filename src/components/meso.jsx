@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
-import Select from 'react-select'
+// import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
+// import Select from 'react-select'
 import ResponsiveAppBar from './appbar';
 import BottomNav from './bottomNav';
 import LinkedFieldsRowEditing from "./editableRows";
@@ -7,6 +8,7 @@ import { BroSplit } from './workouts/brosplit'
 import { FullBody } from './workouts/fullbody'
 import { PushLegsPull } from './workouts/pushlegspull'
 import { UpperLower } from './workouts/upperlower'
+import Button from '@mui/material/Button';
 
 let workoutsTypes = {
 	BroSplit,
@@ -22,22 +24,34 @@ export default function MesoForm() {
 	const rows = []
 	if(trainingStyle && Number(mesoDays)) {
 		for(let i = 0; i < mesoDays; ++i) {
-			rows.push(<LinkedFieldsRowEditing row={workoutsTypes[trainingStyle][i]} day={i+1} key={i} />)	
+			rows.push(
+				<LinkedFieldsRowEditing row={workoutsTypes[trainingStyle][i]} day={i+1} key={i}/>
+			)
 		}
 	}
 
+	const handleSubmit = e => {
+		console.log(e);
+	}
+	// e.target.parentElement.parentElement.childNodes[2].childNodes[0].innerText
+	// e.target.parentElement.parentElement.childNodes[2].childNodes[0].textContent
 	return(
 		<>
 			<ResponsiveAppBar />
 			<form>
 				<RadioMesoComponent setMesoDays={setMesoDays}/>
-				<TrainingStyleComponent setTrainingStyle={setTrainingStyle}/>	
+				<TrainingStyleComponent setTrainingStyle={setTrainingStyle}/>
+				<div className="mesoRows" style={{paddingBottom: '60px'}}>
+					{Boolean(rows.length) && rows.map(row => row)}
+       		{Boolean(rows.length) && <Button onClick={handleSubmit} variant="outlined">Submit Meso</Button>}
+				</div>
 			</form>
-
- 		{/* must be fixed to use .keys rather than manually inserting as done below */}
-			{Boolean(rows.length) &&
-				rows.map(row => row)
-			}
+			{/* <div className="mesoRows" style={{paddingBottom: '60px'}}>
+				<form>
+					{Boolean(rows.length) && rows.map(row => row)}
+       		{Boolean(rows.length) && <Button onClick={handleSubmit} variant="outlined">Submit</Button>}
+				</form>
+			</div> */}
 			<BottomNav />
 		</>
 	)

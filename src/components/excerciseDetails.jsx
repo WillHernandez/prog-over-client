@@ -25,6 +25,13 @@ export default function ExcerciseDetails() {
 		.catch(e => console.log(e))
 	},[excercise])
 
+	// reroute to excercises page after deletion
+	const deleteExcercise = () => {
+		exApi.deleteExcercise(excerciseDets.name)	
+		.then(res => console.log(res.data))
+		.catch(e => console.log(e))
+	}
+
   return (
 		<div>
 		<ResponsiveAppBar />
@@ -48,6 +55,7 @@ export default function ExcerciseDetails() {
 						</Typography> : null
 					}
 					<NotesForm excerciseDets={excerciseDets} setExcerciseDets={setExcerciseDets}/>
+					<Button onClick={deleteExcercise} type='button' variant="contained" color='error'>Delete Excercise</Button>
 				</Stack>
     	</Box>
 		}
@@ -57,12 +65,18 @@ export default function ExcerciseDetails() {
 }
 
 const NotesForm = ({excerciseDets, setExcerciseDets}) => {
-	const submitNote = target => {
-		exApi.postExcerciseNote(excerciseDets.name, target.value)	
-		.then(res => setExcerciseDets(res.data))
-		.catch(e => console.log(e))
+	const [userMessage, setUserMessage] = useState('')
 
-		target.value = ''
+	const submitNote = target => {
+		if(target.value > 4) {
+			exApi.postExcerciseNote(excerciseDets.name, target.value)	
+			.then(res => setExcerciseDets(res.data))
+			.catch(e => console.log(e))
+
+			target.value = ''
+		} else {
+			setUserMessage("Note must contain... a note")
+		}
 	}
 
 	const submitOnEnter = e => {

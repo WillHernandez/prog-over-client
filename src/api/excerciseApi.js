@@ -1,14 +1,16 @@
 import axios from "axios"
 const baseURL = "http://localhost:4000"
-const instance = axios.create({ // sends cookies on each req
+const instance = axios.create({
 	withCredentials: true,
-	baseURL
+	baseURL,
+	host : null
 })
 
 export const fetchAllExcercises = async () => {
 	const res = await instance.get(`${baseURL}/api/excercises`)
 	return res
 }
+
 export const fetchExcercisesFiltered = async e => {
 	const res = await instance.post(`${baseURL}/api/excercises/filter`, {excercises: e})
 	return res
@@ -33,6 +35,12 @@ export const addExcercise = async excerciseVals => {
 export const postExcerciseNote = async (excercise, notes) => {
 	const url = `${baseURL}/api/excercises/notes/${excercise}`
 	const res = await instance.post(url, {notes})
+	return res
+}
+
+export const deleteExcercise = async excercise => {
+	const url = `${baseURL}/api/excercises/${excercise}`
+	const res = await instance.delete(url)
 	return res
 }
 
